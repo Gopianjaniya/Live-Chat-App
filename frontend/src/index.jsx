@@ -1,0 +1,22 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { Toaster } from "react-hot-toast";
+import App from "./App";
+import "./index.css";
+import store, { persistor } from "./redux/store";
+
+export const BASE_URL = process.env.REACT_APP_BACKEND_URL?.trim() || "http://localhost:5000";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+        <Toaster />
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>,
+);
