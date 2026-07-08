@@ -30,6 +30,7 @@ function App() {
     const socketio = io(BASE_URL, {
       query: { userId: authUser._id },
       withCredentials: true,
+      transports: ["websocket", "polling"],
     });
 
     dispatch(setSocket(socketio));
