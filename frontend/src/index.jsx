@@ -11,12 +11,12 @@ export const BASE_URL = process.env.REACT_APP_BACKEND_URL?.trim() || "http://loc
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <App />
         <Toaster />
       </PersistGate>
     </Provider>
-  </React.StrictMode>,
+  
 );

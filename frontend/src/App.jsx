@@ -24,7 +24,7 @@ function App() {
     if (!authUser?._id) {
       dispatch(setSocket(null));
       dispatch(setOnlineUsers([]));
-      return;
+      return; 
     }
 
     const socketio = io(BASE_URL, {
