@@ -31,19 +31,19 @@ const Signup = () => {
   };
 
   return (
-    <div className="w-full max-w-sm">
-      <div className="rounded-lg border border-slate-600 bg-slate-800/80 p-6 text-white shadow-md">
-        <h1 className="text-center text-3xl font-bold">Signup</h1>
+    <div className="w-full max-w-sm px-3 sm:px-0">
+      <div className="rounded-lg border border-slate-600 bg-slate-800/80 p-5 text-white shadow-md sm:p-6">
+        <h1 className="text-center text-2xl font-bold sm:text-3xl">Signup</h1>
         <form onSubmit={onSubmitHandler}>
           <label className="label p-2"><span className="label-text text-white">Full Name</span></label>
-          <input value={user.fullName} onChange={(e) => setUser({ ...user, fullName: e.target.value })} className="input input-bordered h-10 w-full text-black" type="text" placeholder="Full Name" />
+          <input value={user.fullName} onChange={(e) => setUser({ ...user, fullName: e.target.value })} className="input input-bordered h-10 w-full text-base text-black sm:text-sm" type="text" placeholder="Full Name" />
           <label className="label p-2"><span className="label-text text-white">Username</span></label>
-          <input value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })} className="input input-bordered h-10 w-full text-black" type="text" placeholder="Username" />
+          <input value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })} className="input input-bordered h-10 w-full text-base text-black sm:text-sm" type="text" placeholder="Username" />
           <label className="label p-2"><span className="label-text text-white">Password</span></label>
-          <input value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} className="input input-bordered h-10 w-full text-black" type="password" placeholder="Password" />
+          <input value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} className="input input-bordered h-10 w-full text-base text-black sm:text-sm" type="password" placeholder="Password" />
           <label className="label p-2"><span className="label-text text-white">Confirm Password</span></label>
-          <input value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} className="input input-bordered h-10 w-full text-black" type="password" placeholder="Confirm Password" />
-          <div className="my-4 flex items-center gap-5">
+          <input value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} className="input input-bordered h-10 w-full text-base text-black sm:text-sm" type="password" placeholder="Confirm Password" />
+          <div className="my-4 flex flex-wrap items-center gap-4 sm:gap-5">
             <label className="flex items-center gap-2"><input type="radio" name="gender" checked={user.gender === "male"} onChange={() => setUser({ ...user, gender: "male" })} className="radio radio-sm" /> Male</label>
             <label className="flex items-center gap-2"><input type="radio" name="gender" checked={user.gender === "female"} onChange={() => setUser({ ...user, gender: "female" })} className="radio radio-sm" /> Female</label>
           </div>

@@ -10,7 +10,7 @@ const Messages = () => {
   const { messages } = useSelector((store) => store.message);
 
   return (
-    <div className="flex-1 overflow-auto px-4">
+    <div className="flex-1 overflow-auto px-3 sm:px-4">
       {messages.map((message) => (
         <Message key={message._id} message={message} />
       ))}

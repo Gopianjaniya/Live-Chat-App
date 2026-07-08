@@ -5,14 +5,18 @@ import MessageContainer from "./MessageContainer";
 import Sidebar from "./Sidebar";
 
 const HomePage = () => {
-  const { authUser } = useSelector((store) => store.user);
+  const { authUser, selectedUser } = useSelector((store) => store.user);
 
   if (!authUser) return <Navigate to="/login" replace />;
 
   return (
-    <div className="flex h-[88vh] w-full max-w-5xl overflow-hidden rounded-lg border border-slate-600 bg-slate-900">
-      <Sidebar />
-      <MessageContainer />
+    <div className="flex h-[100dvh] w-full overflow-hidden bg-slate-900 sm:h-[90vh] sm:max-w-5xl sm:rounded-lg sm:border sm:border-slate-600">
+      <div className={`${selectedUser ? "hidden sm:flex" : "flex"} min-w-0 flex-1 sm:w-72 sm:flex-none md:w-80`}>
+        <Sidebar />
+      </div>
+      <div className={`${selectedUser ? "flex" : "hidden sm:flex"} min-w-0 flex-1`}>
+        <MessageContainer />
+      </div>
     </div>
   );
 };

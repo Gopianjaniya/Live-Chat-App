@@ -45,7 +45,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="flex w-80 flex-col border-r border-slate-600 p-4">
+    <div className="flex min-w-0 flex-1 flex-col p-3 sm:border-r sm:border-slate-600 sm:p-4">
       <div className="mb-4 flex items-center gap-3 text-white">
         <Avatar user={authUser} size="w-12" />
         <div className="min-w-0">
@@ -55,7 +55,7 @@ const Sidebar = () => {
       </div>
       <form onSubmit={searchSubmitHandler} className="flex items-center gap-2">
         <input value={search} onChange={(e) => setSearch(e.target.value)} className="input input-bordered h-10 flex-1 rounded-md text-black" type="text" placeholder="Search..." />
-        <button type="submit" className="btn h-10 min-h-10 bg-zinc-700 text-white">
+        <button type="submit" className="btn h-10 min-h-10 shrink-0 bg-zinc-700 text-white">
           <BiSearchAlt2 className="h-6 w-6" />
         </button>
       </form>

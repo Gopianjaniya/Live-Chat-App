@@ -17,7 +17,7 @@ const Message = ({ message }) => {
       <div className="chat-image">
         <Avatar user={user} size="w-10" />
       </div>
-      <div className={`chat-bubble ${isMine ? "bg-sky-600 text-white" : "bg-gray-200 text-black"}`}>
+      <div className={`chat-bubble max-w-[78vw] break-words sm:max-w-md ${isMine ? "bg-sky-600 text-white" : "bg-gray-200 text-black"}`}>
         {message.message}
       </div>
     </div>

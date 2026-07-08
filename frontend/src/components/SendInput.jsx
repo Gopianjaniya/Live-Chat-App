@@ -35,9 +35,9 @@ const SendInput = () => {
   };
 
   return (
-    <form onSubmit={onSubmitHandler} className="my-3 px-4">
+    <form onSubmit={onSubmitHandler} className="my-3 px-3 sm:px-4">
       <div className="relative w-full">
-        <input value={message} onChange={(e) => setMessage(e.target.value)} type="text" placeholder="Send a message..." className="block w-full rounded-lg border border-zinc-500 bg-gray-700 p-3 pr-12 text-sm text-white outline-none focus:border-sky-400" />
+        <input value={message} onChange={(e) => setMessage(e.target.value)} type="text" placeholder="Send a message..." className="block w-full rounded-lg border border-zinc-500 bg-gray-700 p-3 pr-12 text-base text-white outline-none focus:border-sky-400 sm:text-sm" />
         <button type="submit" disabled={sending || !message.trim()} className="absolute inset-y-0 end-0 flex items-center pr-4 text-white disabled:opacity-40">
           <IoSend />
         </button>

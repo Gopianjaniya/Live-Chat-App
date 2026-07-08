@@ -46,7 +46,7 @@ function App() {
   }, [authUser?._id, dispatch]);
 
   return (
-    <div className="app-shell p-4 flex items-center justify-center">
+    <div className="app-shell flex items-center justify-center p-0 sm:p-4">
       <RouterProvider router={router} />
     </div>
   );

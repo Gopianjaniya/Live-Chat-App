@@ -1,11 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { IoArrowBack } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedUser } from "../redux/userSlice";
 import Avatar from "./Avatar";
 import Messages from "./Messages";
 import SendInput from "./SendInput";
 
 const MessageContainer = () => {
   const { selectedUser, authUser, onlineUsers } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
   const isOnline = selectedUser?._id && onlineUsers.includes(selectedUser._id);
 
   if (!selectedUser) {
@@ -19,7 +22,15 @@ const MessageContainer = () => {
 
   return (
     <div className="flex min-w-0 flex-1 flex-col">
-      <div className="mb-2 flex items-center gap-3 bg-zinc-800 px-4 py-3 text-white">
+      <div className="mb-2 flex items-center gap-3 bg-zinc-800 px-3 py-3 text-white sm:px-4">
+        <button
+          type="button"
+          onClick={() => dispatch(setSelectedUser(null))}
+          className="btn btn-ghost btn-circle btn-sm shrink-0 text-white sm:hidden"
+          aria-label="Back to conversations"
+        >
+          <IoArrowBack className="h-5 w-5" />
+        </button>
         <Avatar user={selectedUser} online={isOnline} size="w-12" />
         <p className="truncate font-semibold">{selectedUser.fullName}</p>
       </div>
