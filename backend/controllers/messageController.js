@@ -1,6 +1,6 @@
 import { Conversation } from "../models/conversationModel.js";
 import { Message } from "../models/messageModel.js";
-import { getSocketId, io } from "../socket/socket.js";
+import { getSocketIds, io } from "../socket/socket.js";
 
 export const sendMessage = async (req, res) => {
   try {
@@ -32,10 +32,9 @@ export const sendMessage = async (req, res) => {
     await conversation.save();
 
     [senderId, receiverId].forEach((userId) => {
-      const socketId = getSocketId(userId.toString());
-      if (socketId) {
+      getSocketIds(userId.toString()).forEach((socketId) => {
         io.to(socketId).emit("newMessage", newMessage);
-      }
+      });
     });
 
     return res.status(201).json({ newMessage });

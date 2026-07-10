@@ -7,8 +7,8 @@ A full-stack real-time chat application that allows users to send and receive me
 ---
 
 ##  Live Demo
--  Frontend: https://chat-app-three-iota-30.vercel.app/
--  Backend: https://chat-app-copq.onrender.com/
+-  Frontend:https://live-chat-app-pi-seven.vercel.app
+-  Backend: https://live-chat-app-28nf.onrender.com
 
 ---
 

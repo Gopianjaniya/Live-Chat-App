@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { IoSend } from "react-icons/io5";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "..";
+import { addMessage } from "../redux/messageSlice";
 
 const SendInput = () => {
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
   const { selectedUser } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -18,7 +20,7 @@ const SendInput = () => {
     setSending(true);
     setMessage("");
     try {
-      await axios.post(
+      const res = await axios.post(
         `${BASE_URL}/api/v1/message/send/${selectedUser._id}`,
         { message: text },
         {
@@ -26,6 +28,7 @@ const SendInput = () => {
           withCredentials: true,
         },
       );
+      dispatch(addMessage(res.data?.newMessage));
     } catch (error) {
       setMessage(text);
       toast.error(error?.response?.data?.message || "Message not sent");

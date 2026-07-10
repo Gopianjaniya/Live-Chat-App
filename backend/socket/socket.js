@@ -14,22 +14,33 @@ const io = new Server(server, {
   },
 });
 
-export const getReceiverSocketId = (receiverId) => userSocketMap[receiverId];
+export const getReceiverSocketId = (receiverId) => {
+  const socketIds = userSocketMap[receiverId];
+  return socketIds ? Array.from(socketIds)[0] : undefined;
+};
 
-export const getSocketId = (userId) => userSocketMap[userId];
+export const getSocketIds = (userId) => Array.from(userSocketMap[userId] || []);
+
+export const getSocketId = getReceiverSocketId;
 
 io.on("connection", (socket) => {
   const userId = socket.handshake.query.userId;
 
   if (userId) {
-    userSocketMap[userId] = socket.id;
+    if (!userSocketMap[userId]) {
+      userSocketMap[userId] = new Set();
+    }
+    userSocketMap[userId].add(socket.id);
   }
 
   io.emit("getOnlineUsers", Object.keys(userSocketMap));
 
   socket.on("disconnect", () => {
     if (userId) {
-      delete userSocketMap[userId];
+      userSocketMap[userId]?.delete(socket.id);
+      if (userSocketMap[userId]?.size === 0) {
+        delete userSocketMap[userId];
+      }
     }
     io.emit("getOnlineUsers", Object.keys(userSocketMap));
   });
